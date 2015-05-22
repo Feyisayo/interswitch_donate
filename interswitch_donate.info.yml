@@ -1,0 +1,6 @@
+name: Interswitch Donate
+description: Allows site users to make donations using their InterSwitch bank cards
+package: Custom
+type: module
+version: 1.0
+core: 8.x

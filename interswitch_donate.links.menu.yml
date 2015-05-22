@@ -1,0 +1,4 @@
+interswitch_donate.donate:
+  title: 'Make a donation'
+  description: 'Make a donation'
+  route_name: interswitch_donate.donation_page

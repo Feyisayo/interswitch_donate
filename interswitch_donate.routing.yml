@@ -1,0 +1,31 @@
+interswitch_donate.donation_page:
+  path: 'donate'
+  defaults:
+    _controller: '\Drupal\interswitch_donate\Controller\DonationPageController::donationPage'
+    _title: 'Make a donation'
+  requirements:
+    _permission: 'access content'
+
+entity.interswitch_donate_donation.canonical:
+  path: '/isw-donate/{interswitch_donate_donation}'
+  defaults:
+  # Calls the view controller, defined in the annotation of the donation entity
+    _entity_view: 'interswitch_donate_donation'
+    _title: 'Interswitch Donation'
+  #requirements:
+  # Calls the access controller of the entity, $operation 'view'
+  #  _entity_access: 'content_entity_example_contact.view'
+  requirements:
+    _permission: 'access content'
+  
+entity.interswitch_donate_donation.collection:
+  path: '/isw-donate/list'
+  defaults:
+  # Calls the list controller, defined in the annotation of the contact entity.
+    _entity_list: 'interswitch_donate_donation'
+    _title: 'Interswitch Donations'
+  #requirements:
+  # Checks for permission directly.
+   # _permission: 'view contact entity'
+  requirements:
+    _permission: 'access content'
