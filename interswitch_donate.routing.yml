@@ -29,3 +29,13 @@ entity.interswitch_donate_donation.collection:
    # _permission: 'view contact entity'
   requirements:
     _permission: 'access content'
+
+entity.interswitch_donate_donation.delete_form:
+  path: '/isw-donate/{interswitch_donate_donation}/delete'
+  defaults:
+    # Calls the form.delete controller, defined in the donation entity.
+    _entity_form: interswitch_donate_donation.delete
+    _title: 'Delete Donation'
+  requirements:
+    #_entity_access: 'content_entity_example_contact.delete'
+    _permission: 'access content'

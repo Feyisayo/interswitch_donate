@@ -2,3 +2,8 @@ interswitch_donate.donate:
   title: 'Make a donation'
   description: 'Make a donation'
   route_name: interswitch_donate.donation_page
+  
+interswitch_donate.donations:
+  title: 'Interswitch Donations'
+  description: 'List of Interswitch Donations'
+  route_name: entity.interswitch_donate_donation.collection

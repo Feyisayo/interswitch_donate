@@ -24,6 +24,9 @@ use Drupal\user\UserInterface;
  *     "view_builder" = "Drupal\Core\Entity\EntityViewBuilder",
  *     "list_builder" = "Drupal\interswitch_donate\DonationListBuilder",
  *     "access" = "Drupal\Core\Entity\EntityAccessControlHandler",
+ *     "form" = {
+ *        "delete" = "Drupal\interswitch_donate\Form\FormDonationDelete"
+ *      },
  *   },
  *   base_table = "donations",
  *   admin_permission = "administer donations",
@@ -34,8 +37,9 @@ use Drupal\user\UserInterface;
  *     "name" = "transaction_id"
  *   },
  *  links = {
- *     "canonical" = "/isw-donate/{interswitch_donate_donation}",
- *     "collection" = "/isw-donate/list"
+ *     "canonical" = "entity.interswitch_donate_donation.canonical",
+ *     "collection" = "entity.interswitch_donate_donation.collection",
+ *     "delete-form" = "entity.interswitch_donate_donation.delete_form"
  *   }
  * )
  *

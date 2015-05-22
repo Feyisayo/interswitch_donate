@@ -25,6 +25,7 @@ class DonationListBuilder extends EntityListBuilder {
    */
   public function buildHeader() {
     $header['id'] = $this->t('Transaction ID');
+    $header['user'] = $this->t('User');
     $header['webpay_ref'] = $this->t('Webpay Ref');
     $header['amount'] = $this->t('Amount');
     $header['donation_purpose'] = $this->t('Donation Purpose');
@@ -36,6 +37,7 @@ class DonationListBuilder extends EntityListBuilder {
    */
   public function buildRow(EntityInterface $entity) {
     $row['id'] = $entity->link($entity->id());
+    $row['user'] = $entity->get('user_id')->entity->name->value;
     $row['webpay_ref'] = $entity->webpay_ref->value;
     $row['amount'] = $entity->amount->value;
     $row['donation_purpose'] = $entity->donation_purpose->value;
