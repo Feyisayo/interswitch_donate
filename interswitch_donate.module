@@ -1,0 +1,78 @@
+<?php
+
+/**
+ * @file
+ * Contains Drupal\interswitch_donate\interswitch_donate.module
+ * 
+ * Many of the functions in this file will be moved to a service
+ */
+
+use Drupal\interswitch_donate\Entity\Donation;
+/**
+ * Returns Interswitch credentials.
+ */
+function interswitch_donate_get_credentials() {
+  return array(
+    'product_id' => 4220,
+    'pay_item_id' => 101,
+    'currency' => 566,
+    'site_name' => 'd8.dev',
+    'mac_key' => '199F6031F20C63C18E2DC6F9CBA7689137661A05ADD4114ED10F5AFB64BE625B6A9993A634F590B64887EEB93FCFECB513EF9DE1C0B53FA33D287221D75643AB'
+  );
+}
+
+/**
+ * Left-pads transaction ID with zeroes.
+ *
+ * Apparently Interswitch requires transaction references (ID) to between 6 and
+ * 50 characters long. Commerce, on the other hand, serially numbers all
+ * transaction IDs ie 1, 2, 3, 4...etc. So this function will left-pad a
+ * transaction ID with zeroes to meet Interswitch's conditions.
+ *
+ * @param string $txn_id
+ *   The transaction to be left-padded.
+ *
+ * @return string
+ *   Left-padded transaction with a minimum of 6 characters.
+ */
+function interswitch_donate_left_pad_transaction_id($txn_id) {
+  if (strlen($txn_id) < 6) {
+    return str_pad($txn_id, 6, '0', STR_PAD_LEFT);
+  }
+  else {
+    return $txn_id;
+  }
+}
+
+/**
+ * Looks up transaction information from Interswitch.
+ *
+ * Returns an array containing transaction information on success,
+ * FALSE otherwise.
+ *
+ * @param Drupal\interswitch_donate\Entity\Donation $donation
+ *   The donation entity.
+ *
+ * @return array
+ *   Array containing transaction information
+ */
+function interswitch_donate_lookup_transaction(Donation $donation) {
+  $url = 'https://stageserv.interswitchng.com/test_paydirect/api/v1/gettransaction.json';
+
+  $isw_config = interswitch_donate_get_credentials();
+  $amount = $donation->amount->value;
+  $product_id = $isw_config['product_id'];
+  $txn_id = interswitch_donate_left_pad_transaction_id($donation->id());
+
+  $hash = hash('sha512', $product_id . $txn_id . $isw_config['mac_key']);
+  $url .= "?productid=$product_id&transactionreference=$txn_id&amount=$amount";
+
+  $client = \Drupal::httpClient();
+  $response = $client->get($url, ['headers' => ['Hash' => $hash]]);
+
+  if (200 != $response->getStatusCode()) {
+    return FALSE;
+  } else {
+    return $response->json();
+  }
+}

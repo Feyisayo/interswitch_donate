@@ -1,3 +1,11 @@
 Interswitch Donate allows users to make donations using their InterSwitch bank cards.
 
 It is my attempt to get familiar with Drupal 8, the latest iteration of the very impressive CMF.
+
+How will it work?
+1) On the back-end, an administrator sets up donations purposes. These are the various things users can donate to.
+2) The administrator also sets up the integration credentials from Interswitch.
+2) On the front-end, a user views on the donation form, selects a donation purpose, sets the donation amount and proceeds.
+3) Upon confirmation, the user is redirected to Interswitch.
+4) On return, if the payment is successful the user gets an success notice as well as an email notification
+5) If the payment is not successful the user gets an failure notice

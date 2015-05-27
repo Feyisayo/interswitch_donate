@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains \Drupal\interswitch_donate\Form\FormDonationDelete
+ * Contains \Drupal\interswitch_donate\Form\FormDonationDelete.
  */
 
 namespace Drupal\interswitch_donate\Form;

@@ -195,7 +195,12 @@ class Donation extends ContentEntityBase implements DonationInterface{
     
     $fields['payload'] = BaseFieldDefinition::create('map')
       ->setLabel(t('Response Dump'))
-      ->setDescription(t('Response dump from Interswitch'));
+      ->setDescription(t('Response dump from Interswitch'))
+      ->setDisplayOptions('view', array(
+        'label' => 'above',
+        'type' => 'string',
+        'weight' => 6,
+      ));
     
     $fields['created'] = BaseFieldDefinition::create('created')
       ->setLabel(t('Created'))
@@ -204,6 +209,10 @@ class Donation extends ContentEntityBase implements DonationInterface{
     $fields['changed'] = BaseFieldDefinition::create('changed')
       ->setLabel(t('Changed'))
       ->setDescription(t('The time that the donation was last edited.'));
+      
+    $fields['redirect_key'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Redirect Key'))
+      ->setDescription(t('The redirection key added to the url on return from Interswitch'));
     
     return $fields;
   }

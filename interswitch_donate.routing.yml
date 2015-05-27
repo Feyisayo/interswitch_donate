@@ -1,8 +1,24 @@
 interswitch_donate.donation_page:
   path: 'donate'
   defaults:
-    _controller: '\Drupal\interswitch_donate\Controller\DonationPageController::donationPage'
+    _form: '\Drupal\interswitch_donate\Form\FormDonate'
     _title: 'Make a donation'
+  requirements:
+    _permission: 'access content'
+
+interswitch_donate.redirect_page:
+  path: 'isw-return/{entity_id}/{redirect_key}'
+  defaults:
+    _controller: '\Drupal\interswitch_donate\Controller\DonationPageController::donationRedirectPage'
+    _title: 'Donation Status'
+  requirements:
+    _permission: 'access content'
+
+interswitch_donate.donation_review:
+  path: 'isw-review'
+  defaults:
+    _form: '\Drupal\interswitch_donate\Form\FormDonationReview'
+    _title: 'Review your donation'
   requirements:
     _permission: 'access content'
 
