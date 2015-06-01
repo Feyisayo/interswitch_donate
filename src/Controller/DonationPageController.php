@@ -18,6 +18,9 @@ use Drupal\interswitch_donate\Entity\Donation;
 class DonationPageController {
   /**
    * Callback that creates the page the user is returned to from Interswitch.
+   *
+   * TODO: this controller should redirect to another page where the status will
+   * be displayed ala Commerce. This is to prevent the URL from being displayed.
    */
   public function donationRedirectPage($entity_id, $redirect_key) {
     // Load the donation entity.
