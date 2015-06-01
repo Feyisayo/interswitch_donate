@@ -22,7 +22,7 @@ class LeftPadTest extends UnitTestCase {
   /**
    * Tests that strings with less than 6 characters are padded to 6 characters.
    */
-  public function LessThanSixCharactersTest() {
+  public function testLessThanSixCharacters() {
     $this->assertRegExp(
       '/^\d{6}$/',
       interswitch_donate_left_pad_transaction_id('123')
