@@ -43,7 +43,8 @@ class DonationPageController {
     }
 
     // Get status from ISW.
-    $response = interswitch_donate_lookup_transaction($donation);
+    $services = \Drupal::service('interswitch_donate.services');
+    $response = $services->lookUpTransaction($donation);
     $page = array();
     // Display status to user with link to donate again.
     if (FALSE == $response) {
@@ -53,14 +54,14 @@ class DonationPageController {
       drupal_set_message(t('Payment successful'), 'status');
       $page = array(
         '#markup' => '<p>'. t('Payment for donation successful') . '<br/>' . t('Payment Transaction ID:') . ' '
-          . interswitch_donate_left_pad_transaction_id($donation->id())
+          . $services->leftPadTransactionId($donation->id())
           . '<br/>' . t('WebPay Reference:') . ' ' . $response['PaymentReference'] . '</p>'
       );
     } else {
       drupal_set_message(t('Your payment was not successful'), 'error');
       $page = array(
         '#markup' => '<p>'. t('Payment for donation NOT successful') . '<br/>' . t('Payment Transaction ID:') . ' '
-          . interswitch_donate_left_pad_transaction_id($donation->id())
+          . $services->leftPadTransactionId($donation->id())
           . '<br/>' . t('Reason:') . ' ' . $response['ResponseDescription'] . '</p>'
       );
     }

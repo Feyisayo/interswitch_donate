@@ -1,0 +1,3 @@
+services:
+  interswitch_donate.services:
+    class: Drupal\interswitch_donate\Services

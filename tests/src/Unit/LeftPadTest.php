@@ -7,8 +7,7 @@
 namespace Drupal\Tests\interswitch_donate\Unit;
 
 use Drupal\Tests\UnitTestCase;
-
-require_once __DIR__ . '/../../../interswitch_donate.module';
+use Drupal\interswitch_donate\Services;
 
 /**
  * Class LeftPadTest
@@ -23,9 +22,10 @@ class LeftPadTest extends UnitTestCase {
    * Tests that strings with less than 6 characters are padded to 6 characters.
    */
   public function testLessThanSixCharacters() {
+    $services = new Services();
     $this->assertRegExp(
       '/^\d{6}$/',
-      interswitch_donate_left_pad_transaction_id('123')
+      $services->leftPadTransactionId('123')
     );
   }
 }

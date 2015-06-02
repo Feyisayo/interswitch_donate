@@ -36,7 +36,8 @@ class FormDonationReview extends FormBase {
       $donation = entity_load('interswitch_donate_donation', $donation_id);
       // Load Interswitch credentials and parametres.
       // TODO: this should come from a configuration entity.
-      $isw_config = interswitch_donate_get_credentials();
+      $services = \Drupal::service('interswitch_donate.services');
+      $isw_config = $services->getCredentials();
       $isw_config['amount'] = $donation->amount->value;
       $redirect_key = Crypt::hashBase64(time());
       $isw_config['site_redirect_url'] = Url::fromRoute(
@@ -46,7 +47,7 @@ class FormDonationReview extends FormBase {
       )->toString();
       $isw_config['cust_name'] = $donation->get('user_id')->entity->name->value;
       $isw_config['cust_id'] = $donation->get('user_id')->entity->id();
-      $isw_config['txn_ref'] = interswitch_donate_left_pad_transaction_id($donation->id());
+      $isw_config['txn_ref'] = $services->leftPadTransactionId($donation->id());
       $hash = hash(
         'sha512',
         $isw_config['txn_ref']

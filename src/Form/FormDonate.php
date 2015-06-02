@@ -27,7 +27,7 @@ class FormDonate extends FormBase {
 
     $form['donation_purpose'] = array(
       '#type' => 'radios',
-      '#options' => array('Maintenance' => 'Maintenace', 'Water' => 'Water'),
+      '#options' => array('Maintenance' => 'Maintenance', 'Water' => 'Water'),
       '#title' => t('Select the area you want to donate to.'),
       '#required' => TRUE,
     );
