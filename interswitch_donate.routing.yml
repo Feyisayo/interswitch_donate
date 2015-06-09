@@ -59,7 +59,7 @@ entity.interswitch_donate_donation.delete_form:
     _permission: 'administer site configuration'
 
 entity.interswitch_credential.list:
-    path: '/admin/config/interswitch-credentials'
+    path: '/admin/config/interswitch-credentials/list'
     defaults:
       # '_entity_list' tells Drupal to use an entity list controller.
       # We give the entity ID here. Drupal then looks in the entity's annotation
@@ -93,3 +93,12 @@ entity.interswitch_credential.add_form:
     _title: 'Add New Credential'
   requirements:
     _permission: 'administer interswitch credentials'
+
+# Add links to the configuration page
+interswitch_donate.admin_index:
+  path: '/admin/config/interswitch-credentials'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Interswitch Configuration'
+  requirements:
+    _permission: 'access administration pages'
