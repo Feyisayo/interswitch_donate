@@ -1,0 +1,4 @@
+#Define the administer permission for the interswitch credentials config entity.
+'administer interswitch credentials':
+  title: 'Administer Interswitch Credentials'
+  description: Create and edit interswitch credentials

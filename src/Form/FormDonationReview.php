@@ -58,6 +58,7 @@ class FormDonationReview extends FormBase {
         . $isw_config['mac_key']
       );
       $isw_config['hash'] = $hash;
+      // Do not send the MAC Key.
       unset($isw_config['mac_key']);
 
       $donation->set('redirect_key', $redirect_key);

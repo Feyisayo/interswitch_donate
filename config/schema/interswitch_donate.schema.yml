@@ -1,0 +1,34 @@
+# The '.*' at the end of the key allows all default YAML files that start with
+# 'interswitch_donate.interswitch_credential' to be matched in the
+# config/install folder
+interswitch_donate.interswitch_credential.*:
+  type: config_entity
+  label: 'Interswitch API Credential'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    server_url:
+      type: string
+      label: 'Request URL'
+    product_id:
+      type: integer
+      label: 'Product ID'
+    pay_item_id:
+      type: integer
+      label: 'Pay Item ID'
+    currency_code:
+      type: integer
+      label: 'Currency Code'
+    mac_key:
+      type: string
+      label: 'MAC Key'
+    lookup_url:
+      type: string
+      label: 'Look up URL'
+    is_current:
+      type: boolean
+      label: 'Currently Active Credential'

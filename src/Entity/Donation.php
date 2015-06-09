@@ -9,7 +9,7 @@ namespace Drupal\interswitch_donate\Entity;
 
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\ContentEntityBase;
-use Drupal\interswitch_donate\DonationInterface;
+use Drupal\interswitch_donate\Entity\DonationInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\user\UserInterface;

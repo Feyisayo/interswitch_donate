@@ -1,0 +1,11 @@
+<?php
+/**
+ * @file
+ * Allows users to make donations on a site using their Interswitch compatible
+ * cards.
+ */
+//const INTERSWITCH_DONATE_LIVE_SERVER = 'https://webpay.interswitchng.com/paydirect/pay';
+//const INTERSWITCH_DONATE_LIVE_LOOKUP = 'https://webpay.interswitchng.com/paydirect/api/v1/gettransaction.json';
+//
+//const INTERSWITCH_DONATE_TEST_SERVER = 'https://stageserv.interswitchng.com/test_paydirect/pay';
+//const INTERSWITCH_DONATE_TEST_LOOKUP = 'https://stageserv.interswitchng.com/test_paydirect/api/v1/gettransaction.json';

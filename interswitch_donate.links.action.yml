@@ -1,0 +1,5 @@
+interswitch_credential.add_action:
+  route_name: entity.interswitch_credential.add_form
+  title: 'Add Credential'
+  appears_on:
+    - entity.interswitch_credential.list

@@ -13,7 +13,7 @@ use Drupal\interswitch_donate\Services;
  * Class LeftPadTest
  * @package Drupal\Tests\interswitch_donate\Unit
  *
- * Tests for interswitch_donate_left_pad_transaction_id()
+ * Tests for Drupal\interswitch_donate\Services::leftPadTransactionId
  *
  * @group interswitch_donate
  */
