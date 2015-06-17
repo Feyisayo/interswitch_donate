@@ -22,3 +22,10 @@ entity.interswitch_credential.list:
   description: 'Configure Interswitch API credentials including MAC Key, server URLs etc'
   weight: -10
   route_name: entity.interswitch_credential.list
+
+entity.interswitch_donation_purpose.list:
+  title: 'Interswitch Donation Purpose'
+  parent: interswitch_donate.admin_index
+  description: 'Configure Interswitch donation purposes.'
+  weight: 0
+  route_name: entity.interswitch_donation_purpose.collection

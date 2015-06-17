@@ -1,8 +1,7 @@
 <?php
-
 /**
  * @file
- * Contains \Drupal\interswitch_donate\DonationInterface.
+ * Contains Drupal\interswitch_donate\Entity\DonationPurposeInterface.
  */
 
 namespace Drupal\interswitch_donate\Entity;
@@ -10,11 +9,10 @@ namespace Drupal\interswitch_donate\Entity;
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\user\EntityOwnerInterface;
 use Drupal\Core\Entity\EntityChangedInterface;
-
 /**
- * Provides an interface defining a Donation entity.
+ * Provides an interface defining a Donation Purpose entity.
  */
-interface DonationInterface extends ContentEntityInterface, EntityOwnerInterface, EntityChangedInterface {
+interface DonationPurposeInterface extends ContentEntityInterface, EntityOwnerInterface, EntityChangedInterface {
   /**
    * Returns the entity creation timestamp.
    *

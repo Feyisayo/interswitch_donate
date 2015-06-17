@@ -100,9 +100,9 @@ class FormCredential extends EntityForm{
     // Trim text fields.
     $entity->set('id', trim($entity->id()));
     $entity->set('label', trim($entity->label()));
-    $entity->set('mac_key', $form_state->getValue('mac_key'));
-    $entity->set('pay_item_id', $form_state->getValue('pay_item_id'));
-    $entity->set('product_id', $form_state->getValue('product_id'));
+    $entity->set('mac_key', trim($form_state->getValue('mac_key')));
+    $entity->set('pay_item_id', trim($form_state->getValue('pay_item_id')));
+    $entity->set('product_id', trim($form_state->getValue('product_id')));
 
     // Set the currency code
     $entity->set('currency_code', 566);

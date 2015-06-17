@@ -3,3 +3,9 @@ interswitch_credential.add_action:
   title: 'Add Credential'
   appears_on:
     - entity.interswitch_credential.list
+
+interswitch_donation_purpose.add_action:
+  route_name: entity.interswitch_donation_purpose.add_form
+  title: 'Add A Donation Purpose'
+  appears_on:
+    - entity.interswitch_donation_purpose.collection

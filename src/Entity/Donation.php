@@ -13,6 +13,7 @@ use Drupal\interswitch_donate\Entity\DonationInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\user\UserInterface;
+use Drupal\Core\Entity\EntityChangedTrait;
 
 /**
  * Defines the Donation entity.
@@ -45,6 +46,7 @@ use Drupal\user\UserInterface;
  *
  */
 class Donation extends ContentEntityBase implements DonationInterface{
+  use EntityChangedTrait;
   /**
    * {@inheritdoc}
    *
@@ -129,7 +131,7 @@ class Donation extends ContentEntityBase implements DonationInterface{
       ->setDescription(t('The UUID of the donation entity.'))
       ->setReadOnly(TRUE);
     
-    // Owner field of the contact.
+    // Owner field of the donation.
     // Entity reference field, holds the reference to the user object.
     // The view shows the user name field of the user.
     $fields['user_id'] = BaseFieldDefinition::create('entity_reference')
@@ -144,17 +146,14 @@ class Donation extends ContentEntityBase implements DonationInterface{
       ))
       ->setDisplayConfigurable('view', TRUE);
 
-    $fields['donation_purpose'] = BaseFieldDefinition::create('string')
+    $fields['donation_purpose'] = BaseFieldDefinition::create('entity_reference')
       ->setLabel(t('Purpose of Donation'))
       ->setDescription(t('The purpose of the donation.'))
-      ->setSettings(array(
-        'default_value' => '',
-        'max_length' => 255,
-        'text_processing' => 0,
-      ))
+      ->setSetting('target_type', 'interswitch_donation_purpose')
+      ->setSetting('handler', 'default')
       ->setDisplayOptions('view', array(
         'label' => 'above',
-        'type' => 'string',
+        'type' => 'entity_reference',
         'weight' => 3,
       ))
       ->setDisplayConfigurable('view', TRUE);

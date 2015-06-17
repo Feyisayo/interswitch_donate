@@ -12,13 +12,13 @@ use Drupal\Core\Entity\EntityListBuilder;
 
 /**
  * Provides a list controller for the interswitch_donate donation entity
- *
+ * @todo: show donations for the current user only
  */
 class DonationListBuilder extends EntityListBuilder {
   /**
    * {@inheritdoc}
    *
-   * Building the header and content lines for the contact list.
+   * Building the header and content lines for the donation list.
    *
    * Calling the parent::buildHeader() adds a column for the possible actions
    * and inserts the 'edit' and 'delete' links as defined for the entity type.
@@ -42,5 +42,14 @@ class DonationListBuilder extends EntityListBuilder {
     $row['amount'] = $entity->amount->value;
     $row['donation_purpose'] = $entity->donation_purpose->value;
     return $row + parent::buildRow($entity);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function render() {
+    $build = parent::render();
+    $build['table']['#empty'] = $this->t('No donations available yet.');
+    return $build;
   }
 }

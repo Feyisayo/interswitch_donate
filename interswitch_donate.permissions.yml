@@ -2,3 +2,7 @@
 'administer interswitch credentials':
   title: 'Administer Interswitch Credentials'
   description: Create and edit interswitch credentials
+
+'administer interswitch donation purpose':
+  title: 'Administer Interswitch Donation Purpose'
+  description: Create and edit interswitch donation purpose
